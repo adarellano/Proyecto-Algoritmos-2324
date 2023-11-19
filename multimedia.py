@@ -1,0 +1,42 @@
+class Post:
+
+    def __init__(self,usuario,tipo,descrip,fecha,numeral,likes,comentarios,url):
+
+        self.usuario = usuario
+        self.tipo = tipo
+        self.descrip = descrip
+        self.numeral = numeral
+        self.fecha = fecha
+        self.likes = likes
+        self.comentarios = comentarios
+        self.url = url
+
+    def ver_multimedia(self):
+        return f"Tipo - {self.tipo}\n - Descripción: {self.descrip}\n - Fecha {self.fecha}\n - Hashtags {self.numeral} "
+
+    def ver_likes(self):
+            if self.likes == []:
+                return f"Sin likes"
+            else:
+                ListadoLikes = "Likes: "
+                for CadaLike in self.likes:
+                    if ListadoLikes != "Likes: ":
+                        ListadoLikes = "-" + CadaLike
+                    else:
+                        ListadoLikes = ListadoLikes + CadaLike
+
+                return ListadoLikes
+
+    def ver_comentario(self):
+        if self.comentarios ==[]:
+            return f"No hay comentarios"
+        else:
+            ListadoComentarios = "Comentarios: "
+            for CadaComentario in self.comentarios:
+                if ListadoComentarios != "Comentarios: ":
+                    ListadoComentarios = "\n" +  CadaComentario.ver_comentario()
+                else:
+                    ListadoComentarios = ListadoComentarios + CadaComentario.ver_comentario()
+            return ListadoComentarios
+
+
